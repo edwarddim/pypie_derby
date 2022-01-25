@@ -62,7 +62,6 @@ class Pie:
         results =  connectToMySQL('pies_schema').query_db(query, data)
         pies = []
         for pie in results:
-            print(pie)
             pies.append( cls(pie) )
         return pies
 
