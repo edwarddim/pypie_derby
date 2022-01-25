@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Dashbaord</h1>
+    <a href="/pies">PyPie Derby</a>
+    <div>
+        <form action="/pies/new" method="post">
+            <p>
+                Name:
+                <input type="text" name="name" id="">
+            </p>
+            <p>
+                Filling:
+                <input type="text" name="filling" id="">
+            </p>
+            <p>
+                Crust:
+                <input type="text" name="crust" id="">
+            </p>
+            <button>Add Pie</button>
+        </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+    <div>
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Actions</th>
+            </thead>
+            <tbody>
+                {% for pie in pies %}
+                    <tr>
+                        <td>{{pie.name}}</td>
+                        <td>
+                            <a href="/pies/{{pie.id}}/edit">Edit</a>
+                            <a href="/pies/{{pie.id}}/delete">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

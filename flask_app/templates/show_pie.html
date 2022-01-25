@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>{{pie.name}} by {{pie.creator}}</h1>
+    <h2>Filling: {{pie.filling}}</h2>
+    <h2>Crust: {{pie.crust}}</h2>
+    {% if voted %}
+        <form action="/pies/{{pie.id}}/dislike" method="post">
+            <button>Yuk</button>
+        </form>
+    {% else %}
+        <form action="/pies/{{pie.id}}/like" method="post">
+            <button>Yum</button>
+        </form>
+    {% endif %}
+</body>
+</html>
